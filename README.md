@@ -135,7 +135,6 @@ ROP = (Average Daily Usage × Lead Time in Days) + Safety Stock
 |------|-------------|
 | `C&A_PROJECT.sql` | All SQL queries — run section by section in MySQL Workbench |
 | `Excel dashboards and dataset.xlsx` | Raw dataset + Power BI dashboard |
-| `ER_Diagram_Project.mwb` | MySQL Workbench ERD file |
 | `SQL Project.pdf` | Project report |
 
 ---
