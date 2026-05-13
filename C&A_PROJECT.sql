@@ -42,7 +42,7 @@ SELECT * FROM inventory_rawdata LIMIT 10;
 
 -- ============================================================
 -- SECTION 3: NORMALIZE INTO CLEAN TABLES
--- We split the raw data into 4 focused tables
+-- We split the raw data into 4 focused tables:
 -- stores, products, inventory_facts, environment
 -- ============================================================
 
@@ -108,7 +108,7 @@ JOIN products p ON ir.Product_ID = p.Product_ID;
 
 
 -- Table 4: Environment (weather, holidays, seasonality)
-CREATE TABLE Environment (
+CREATE TABLE environment (
     date DATE,
     st_no INT,
     Weather_Condition VARCHAR(50),
@@ -117,7 +117,7 @@ CREATE TABLE Environment (
     FOREIGN KEY (st_no) REFERENCES stores(st_no)
 );
 
-INSERT INTO Environment (date, st_no, Weather_Condition, Holiday_Promotion, Seasonality)
+INSERT INTO environment (date, st_no, Weather_Condition, Holiday_Promotion, Seasonality)
 SELECT
     STR_TO_DATE(ir.Date, '%Y-%m-%d'),
     s.st_no,
@@ -133,7 +133,7 @@ JOIN stores s ON ir.Store_ID = s.Store_ID AND ir.Region = s.Region;
 -- Shows the most recent stock level for every store-product pair
 -- CTE 1 = all store+product combinations
 -- CTE 2 = find the latest date for each pair
--- Final = join to get the actual inventory on that date
+-- Final  = join to get the actual inventory on that date
 -- ============================================================
 
 -- Preview first (before saving as table)
